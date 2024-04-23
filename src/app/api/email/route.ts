@@ -10,14 +10,14 @@ export async function POST(request:Request, response:Response){
     const {nombre, email, asunto, mensaje} = await request.json();
     console.log(nombre, email, asunto, mensaje);
     await resend.emails.send({
-        from: 'verify@armandovl.dev',
+        from: 'contacto@armandovl.dev',
         to: [email],
         subject: "Mensaje recibido",
         react: VercelInviteUserEmail({ nombre }),
       });
 
       await resend.emails.send({
-        from: 'verify@armandovl.dev',
+        from: 'contacto@armandovl.dev',
         to: ['armvillagr@gmail.com'],
         subject: asunto,
         react: ContactoEmail({ nombre, email, asunto, mensaje}),
